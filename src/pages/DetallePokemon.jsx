@@ -7,8 +7,10 @@ import useFetchHabilidades from "../hooks/useFetchHabilidades";
 import Stats from "../components/Stats/Stats";
 import Caracteristicas from "../components/Caracteristicas/Caracteristicas";
 import BotonCaptura from "../components/BotonCaptura/BotonCaptura";
+import { useAuth } from "../context/AuthContext";
 
 function DetallePokemon() {
+  const { usuario } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
   const { error, loading, pokemon, species, evolutionChain } =
@@ -63,7 +65,7 @@ function DetallePokemon() {
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
               <img src={pokemon.sprites.back_default} alt={pokemon.name} />
             </div>
-            <BotonCaptura pokemonID={pokemon.id} />
+            {usuario && (<BotonCaptura pokemonID={pokemon.id} />)}
             <div className="descripcion">
               <div className="pk-info">
                 <span>Región: 🗺️ {region}</span>

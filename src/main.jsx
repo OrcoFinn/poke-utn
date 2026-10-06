@@ -7,6 +7,9 @@ import Index from "./pages/Index.jsx";
 import Pokemons from "./pages/Pokemons.jsx";
 import PaginaError from "./pages/PaginaError.jsx";
 import DetallePokemon from "./pages/DetallePokemon.jsx";
+import Login from "./pages/Login.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import Registro from "./pages/Registro.jsx";
 
 const mapaRutas = createBrowserRouter([
   {
@@ -16,6 +19,8 @@ const mapaRutas = createBrowserRouter([
       { index: true, element: <Index /> },
       { path: "pokedex", element: <Pokemons /> },
       { path: "pokedex/:id", element: <DetallePokemon /> },
+      { path: "login", element: <Login /> },
+      { path: "registro", element: <Registro /> },
       { path: "*", element: <PaginaError /> },
     ],
   },
@@ -23,6 +28,8 @@ const mapaRutas = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={mapaRutas} />
+    <AuthProvider>
+      <RouterProvider router={mapaRutas} />
+    </AuthProvider>
   </StrictMode>,
 );

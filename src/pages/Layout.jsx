@@ -1,11 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header/Header";
-import "../App.css"
+import "../App.css";
 
 function Layout() {
+  const location = useLocation();
+
+  const ocultarHeader =
+    location.pathname === "login" || location.pathname === "registro";
+
   return (
     <main className="app">
-      <Header />
+      {ocultarHeader && <Header />}
 
       <Outlet />
     </main>

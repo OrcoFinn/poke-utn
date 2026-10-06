@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 function useCapturarPokemon(pokemonID) {
-  const [capturado, setCapturar] = useState(false);
+  const {
+    usuario,
+    capturarPokemon,
+    liberarPokemon,
+  } = useAuth();
 
-  const capturarPokemon = () => {
-    setCapturar(true);
-  };
+  const capturados =
+    usuario?.pokemonsCapturados || [];
 
-  const liberarPokemon = () => {
-    setCapturar(false);
-  };
+  const capturado = capturados.includes(pokemonID);
 
   return {
     capturado,
-    capturarPokemon,
-    liberarPokemon,
+    capturarPokemon: () =>
+      capturarPokemon(pokemonID),
+    liberarPokemon: () =>
+      liberarPokemon(pokemonID),
   };
 }
 

@@ -1,22 +1,33 @@
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import useFetchPokemon from "../hooks/useFetchPokemon";
 import CardPokemon from "../components/CardPokemon/CardPokemon";
 import Buscador from "../components/Buscador/Buscador";
 import "../components/Styles/Pokemons.css";
 
 function Pokemons() {
-  const { pokemons, loading, error, cargarMas, hayMas } = useFetchPokemon();
+  const [searchParams] = useSearchParams();
+
+  const region = searchParams.get("region");
+
+  const {
+    pokemons,
+    loading,
+    error,
+    cargarMas,
+    hayMas,
+  } = useFetchPokemon(region);
+
 
   const location = useLocation();
 
   const observerRef = useRef(null);
 
   useEffect(() => {
-  if (location.state?.desdeMenu) {
-    window.scrollTo(0, 0);
-  }
-}, [location.state]);
+    if (location.state?.desdeMenu) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const scrollGuardado = sessionStorage.getItem("pokedexScroll");

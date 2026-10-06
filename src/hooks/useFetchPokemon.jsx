@@ -1,20 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import { URL_POKEMONS, POKEMONS_PER_PAGE } from "../utils/api";
 
-function useFetchPokemon() {
+const REGIONES = {
+  kanto: {
+    offset: 0,
+    total: 151,
+  },
+  johto: {
+    offset: 151,
+    total: 100,
+  },
+  hoenn: {
+    offset: 251,
+    total: 135,
+  },
+};
+
+function useFetchPokemon(region) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hayMas, setHayMas] = useState(true);
 
-  // Guarda el próximo offset sin depender del render de React
   const offsetRef = useRef(0);
-
-  // Evita que se hagan dos llamadas al mismo tiempo
   const loadingRef = useRef(false);
 
+  const configuracion = REGIONES[region];
+
   const cargarMas = async () => {
-    // Si ya está cargando, no hacemos otra llamada
     if (loadingRef.current || !hayMas) return;
 
     loadingRef.current = true;
@@ -23,10 +36,19 @@ function useFetchPokemon() {
     try {
       const offset = offsetRef.current;
 
-      console.log("Cargando desde offset:", offset);
+      const inicio = configuracion?.offset ?? 0;
+      const total = configuracion?.total ?? Infinity;
+
+      const cargados = offset - inicio;
+      const restantes = total - cargados;
+
+      const limite = Math.min(
+        POKEMONS_PER_PAGE,
+        restantes
+      );
 
       const respuesta = await fetch(
-        `${URL_POKEMONS}?limit=${POKEMONS_PER_PAGE}&offset=${offset}`
+        `${URL_POKEMONS}?limit=${limite}&offset=${offset}`
       );
 
       if (!respuesta.ok) {
@@ -49,10 +71,15 @@ function useFetchPokemon() {
 
       setPokemons((prev) => [...prev, ...detalles]);
 
-      // Avanzamos el offset
-      offsetRef.current += POKEMONS_PER_PAGE;
+      offsetRef.current += detalles.length;
 
-      if (!datos.next) {
+      const nuevosCargados =
+        offsetRef.current - inicio;
+
+      if (
+        nuevosCargados >= total ||
+        !datos.next
+      ) {
         setHayMas(false);
       }
     } catch (error) {
@@ -64,8 +91,14 @@ function useFetchPokemon() {
   };
 
   useEffect(() => {
+    offsetRef.current = configuracion?.offset ?? 0;
+
+    setPokemons([]);
+    setHayMas(true);
+    setError(null);
+
     cargarMas();
-  }, []);
+  }, [region]);
 
   return {
     pokemons,

@@ -1,24 +1,33 @@
-import useState from "react";
 import "./BotonCaptura.css";
 import useCapturarPokemon from "../../hooks/useCapturarPokemon";
-import "./BotonCaptura.css"
-import pokeball from "../../assets/pokeball.png"
+import pokeball from "../../assets/pokeball.png";
 
 function BotonCaptura({ pokemonID }) {
-  const { capturado, capturarPokemon, liberarPokemon } =
-    useCapturarPokemon(pokemonID);
+  const {
+    capturado,
+    capturarPokemon,
+    liberarPokemon,
+  } = useCapturarPokemon(pokemonID);
 
   return (
     <button
-      className={`boton-capturar ${capturado ? "capturado" : ""}`}
-      onClick={capturado ? liberarPokemon : capturarPokemon}
+      className={`boton-capturar ${
+        capturado ? "capturado" : ""
+      }`}
+      onClick={
+        capturado
+          ? liberarPokemon
+          : capturarPokemon
+      }
     >
-         
       {capturado ? (
         <>
-        <img src={pokeball} alt="" /> Liberar
+          <img src={pokeball} alt="" />
+          Liberar
         </>
-        ) : "Capturar"}
+      ) : (
+        "Capturar"
+      )}
     </button>
   );
 }
