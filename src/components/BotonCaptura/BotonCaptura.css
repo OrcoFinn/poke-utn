@@ -1,0 +1,27 @@
+.boton-capturar {
+    display: flex;
+    width: fit-content;
+    height: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: none;
+    border: none;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: red;
+    color: black;
+    font-weight: 600;
+}
+
+.capturado{
+    background-color: rgb(187, 250, 195);
+    color: black;
+    font-weight: 600;
+
+}
+
+.capturado img {
+    width: 2rem;
+}
