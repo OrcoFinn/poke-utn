@@ -1,16 +1,16 @@
 header {
     background-color: var(--accent);
-    /* display: flex;
-    flex-direction: column; */
-    width: 332px;
-    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
     padding: 1rem;
-    align-self: stretch;
     position: sticky;
-    left: 0;
     top: 0;
-    bottom: 0;
     flex-shrink: 0;
+    z-index: 999999;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -47,11 +47,11 @@ header .trainer h4 {
     margin: 0;
 }
 
-header .trainer a {
+header .trainer h5 {
     font-family: var(--font-text);
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--text-h);
     margin: 0;
     text-decoration: none;
 }

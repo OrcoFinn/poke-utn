@@ -1,4 +1,5 @@
 .main-container{
+    width: 100vw;
     background-image: url(../../assets/mapakanto.png);
      background-size: cover;
     background-position: center;
@@ -57,4 +58,12 @@
 
 .pokedex-link:hover .pokemon-progress strong{
     color: var(--white);
+}
+
+.regiones{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }

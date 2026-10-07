@@ -19,21 +19,43 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    setError(null);
+  setError(null);
+
+  try {
+    const emailCodificado = encodeURIComponent(email);
 
     const respuesta = await fetch(
-      `${URL_USUARIOS}?email=${email}&password=${password}`,
+      `${URL_USUARIOS}?email=${emailCodificado}`
     );
+
+    if (!respuesta.ok) {
+      setError("No se pudo conectar con el servidor");
+      return false;
+    }
 
     const encontrados = await respuesta.json();
 
     if (encontrados.length === 0) {
-      setError("Email o contraseña invalida");
+      setError("El email no está registrado");
       return false;
     }
-    guardarSesion(encontrados[0]);
+
+    const usuarioEncontrado = encontrados[0];
+
+    if (usuarioEncontrado.password !== password) {
+      setError("Los datos ingresados son incorrectos");
+      return false;
+    }
+
+    guardarSesion(usuarioEncontrado);
+
     return true;
-  };
+  } catch (error) {
+    console.error("Error en login:", error);
+    setError("No se pudo conectar con el servidor");
+    return false;
+  }
+};
 
   const registrar = async (name, email, password) => {
     setError(null);

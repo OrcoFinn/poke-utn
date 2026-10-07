@@ -1,6 +1,7 @@
 import "./Button.css";
 
 function Button({
+  icon,
   children,
   className = "",
   secondary = false,
@@ -13,7 +14,8 @@ function Button({
         secondary ? "secondary" : ""
       }`}
     >
-      {children}
+      {icon ? (<img src={icon} />) : ("")}
+      {children ? children : ""}
     </button>
   );
 }

@@ -1,11 +1,18 @@
-.tarjeta .pokemon{
+.tarjeta {
+    height: auto;
+    padding: 2rem;
+}
+
+.tarjeta .pokemon {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     flex: 1;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    gap:1rem;
+    gap: 1rem;
+    height: auto;
 }
 
 .pagination {
@@ -19,4 +26,8 @@
     margin-top: 1rem;
     padding: 1rem;
     border-radius: 8px;
+}
+
+.regiones{
+    margin: 2rem 0;
 }

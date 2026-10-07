@@ -12,7 +12,9 @@
         5,
         4,
         15,
-        2
+        2,
+        207,
+        151
       ]
     },
     {
@@ -25,7 +27,10 @@
       "name": "lenita",
       "email": "lenia@peluche.com",
       "password": "pepecha",
-      "pokemonsCapturados": [],
+      "pokemonsCapturados": [
+        2,
+        11
+      ],
       "id": "ytOGhEHcjOQ"
     },
     {
@@ -46,9 +51,24 @@
       "email": "federico@gmail.com",
       "password": "1234",
       "pokemonsCapturados": [
-        67
+        67,
+        7
       ],
       "id": "Evzfb-xIbOA"
+    },
+    {
+      "name": "Martin Rodriguez",
+      "email": "martin@gmail.com",
+      "password": "343455",
+      "pokemonsCapturados": [],
+      "id": "_Iyv2PKs5_E"
+    },
+    {
+      "name": "Sebastian",
+      "email": "sebas@gmail.com",
+      "password": "252525",
+      "pokemonsCapturados": [],
+      "id": "t7Dj95zIOOw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

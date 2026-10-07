@@ -1,25 +1,20 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import useFetchPokemon from "../hooks/useFetchPokemon";
-import {
-  Buscador,
-  CardPokemon,
-} from "../components";
+import { Buscador, CardPokemon, CardRegion } from "../components";
 import "../components/Styles/Pokemons.css";
+import logo from "../assets/pokeballicon.webp";
 
 function Pokemons() {
   const [searchParams] = useSearchParams();
 
   const region = searchParams.get("region");
 
-  const {
-    pokemons,
-    loading,
-    error,
-    cargarMas,
-    hayMas,
-  } = useFetchPokemon(region);
+  const busqueda = searchParams.get("search") || "";
 
+
+  const { pokemons, loading, error, cargarMas, hayMas } =
+    useFetchPokemon(region);
 
   const location = useLocation();
 
@@ -81,6 +76,29 @@ function Pokemons() {
   return (
     <section className="tarjeta">
       <Buscador />
+      <nav className="nav-principal">
+        <div className="regiones">
+          <CardRegion
+            img={logo}
+            url="/pokedex?region=kanto"
+            region="Pokedex de Kanto"
+            header
+          />
+          <CardRegion
+            img={logo}
+            url="/pokedex?region=johto"
+            region="Pokedex de Johto"
+            header
+          />
+          <CardRegion
+            img={logo}
+            url="/pokedex?region=hoenn"
+            region="Pokedex de Hoenn"
+            header
+          />
+        </div>
+      </nav>
+
       <div className="pokemon">
         {pokemons.map((pokemon) => (
           <CardPokemon key={pokemon.id} pokemon={pokemon} />

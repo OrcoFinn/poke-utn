@@ -3,6 +3,11 @@
   box-sizing: border-box;
 }
 
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
 .main-container {
     height: auto;
     display: flex;
@@ -33,6 +38,25 @@
 
   --font-heading: "Special Gothic Expanded One", sans-serif;
   --font-text: "Noto Sans", sans-serif;
+
+ --type-grass: #7ee85c;
+  --type-fire: #f58b4f;
+  --type-water: #6f9cff;
+  --type-electric: #f2cf35;
+  --type-ice: #70c5c5;
+  --type-fighting: #b85f58;
+  --type-poison: #e477e4;
+  --type-ground: #dfbd55;
+  --type-flying: #9470e8;
+  --type-psychic: #f46f98;
+  --type-bug: #c8dd45;
+  --type-rock: #d9be4f;
+  --type-ghost: #8774a8;
+  --type-dragon: #5924d1;
+  --type-dark: #51392d;
+  --type-steel: #8585ad;
+  --type-fairy: #dc6685;
+  --type-normal: #dddd91;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;

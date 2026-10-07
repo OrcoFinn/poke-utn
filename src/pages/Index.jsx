@@ -1,6 +1,6 @@
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Totalizador } from "../components";
+import { Buscador, Totalizador, CardRegion } from "../components";
 import "../../src/pages/styles/index.css";
 import logo from "../assets/pokeballicon.webp";
 
@@ -13,25 +13,31 @@ function Index() {
   return (
     <section className="main-container">
       <Link to="/pokedex" className="pokedex-link">
-      <img src={logo} />
+        <img src={logo} />
         <div className="datos-pokedex">
           <h2>Pokedex</h2>
           <Totalizador capturados={usuario?.pokemonsCapturados || []} />
         </div>
       </Link>
 
+      <Buscador />
+
       <div className="regiones">
-        <Link to="/pokedex?region=kanto" className="boton-link">
-          Kanto
-        </Link>
-
-        <Link to="/pokedex?region=johto" className="boton-link">
-          Johto
-        </Link>
-
-        <Link to="/pokedex?region=hoenn" className="boton-link">
-          Hoenn
-        </Link>
+        <CardRegion
+          img={logo}
+          url="/pokedex?region=kanto"
+          region="Pokedex de Kanto"
+        />
+        <CardRegion
+          img={logo}
+          url="/pokedex?region=johto"
+          region="Pokedex de Johto"
+        />
+        <CardRegion
+          img={logo}
+          url="/pokedex?region=hoenn"
+          region="Pokedex de Hoenn"
+        />
       </div>
     </section>
   );

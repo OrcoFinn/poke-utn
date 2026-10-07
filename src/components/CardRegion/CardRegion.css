@@ -1,0 +1,54 @@
+.card-region {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.card-region-header {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.card-region-header img {
+    width: 1rem;
+}
+
+.card-region:hover,
+.region-kanto,
+.region-johto,
+.region-hoenn {
+    background-color: var(--black);
+}
+
+.card-region:hover .nombre-region,
+.region-kanto .nombre-region,
+.region-johto .nombre-region,
+.region-hoenn .nombre-region {
+    color: var(--white);
+}
+
+.card-region img {
+    width: 150px;
+}
+
+.nombre-region {
+    font-family: var(--font-text);
+    font-weight: 600;
+    color: var(--black);
+    font-size: 1.25rem;
+}

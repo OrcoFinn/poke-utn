@@ -7,5 +7,6 @@ export { default as Header } from "./Header/Header";
 export { default as LineaEvolutiva } from "./LineaEvolutiva/LineaEvolutiva";
 export { default as Stats } from "./Stats/Stats";
 export { default as Type } from "./Type/Type";
-export { default as Input } from "./Input/Input"
-export { default as Totalizador } from "./Totalizador/Totalizador"
+export { default as Input } from "./Input/Input";
+export { default as Totalizador } from "./Totalizador/Totalizador";
+export { default as CardRegion } from "./CardRegion/CardRegion";

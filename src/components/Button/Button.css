@@ -1,15 +1,20 @@
 .button {
+  display: flex;
   font-family: var(--font-text);
   font-weight: 700;
   border-radius: 999999px;
   border: none;
-  padding: 10px 16px;
+  padding: 0.75rem 2rem;
   cursor: pointer;
   font-size: 16px;
   background-color: var(--action-primary);
   color: #fff;
   height: 3rem;
   transition: all 0.2s ease;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 3rem;
 }
 
 .button:hover {

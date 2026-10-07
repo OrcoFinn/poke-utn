@@ -1,0 +1,39 @@
+.barra-busqueda {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+}
+
+.barra-busqueda input {
+    width: 100%;
+    font-family: var(--font-text);
+    font-size: 1.25rem;
+    padding: 1rem 1rem 1rem 3rem;
+    border-radius: 99999999px;
+    border: 2px solid var(--white);
+    background-color: var(--black);
+    color: var(--text);
+    outline: none;
+    transition: 0.3s all ease;
+}
+
+.barra-busqueda input:focus {
+    color: var(--white);
+    border: 2px solid var(--accent);
+    outline: none;
+}
+
+.barra-busqueda input:valid {
+    color: var(--white);
+    outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    color: #fff;
+}
