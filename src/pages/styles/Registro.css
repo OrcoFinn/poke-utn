@@ -1,0 +1,89 @@
+.tarjeta-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: auto;
+    bottom: auto;
+    flex: 1;
+    gap: 2rem;
+    background-image: url(../../assets/fondo.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.grupo-login {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.card-login {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--code-bg);
+    height: auto;
+    width: 500px;
+}
+
+.card-login img {
+    position: absolute;
+    width: 3rem;
+    top: -22px;
+}
+
+.titulo {
+    font-family: var(--font-text);
+    text-align: left;
+    padding: 1.25rem 0;
+    width: 100%;
+    font-size: 1.25rem;
+    color: var(--text-h);
+}
+
+.tarjeta-auth .head-login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    color: var(--text-h);
+}
+
+.formulario-auth {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+}
+
+.tarjeta-auth h2 {
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.tarjeta-auth h1 {
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.auth-link {
+    display: flex;
+    padding-top: 2rem;
+    font-family: var(--font-text);
+    color: var(--text-h);
+    gap: 0.5rem;
+}
+
+.auth-link a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}

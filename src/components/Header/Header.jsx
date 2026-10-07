@@ -1,27 +1,24 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
-import logo from "../../assets/pokeballicon.webp";
+import trainer from "../../assets/trainer.png";
 import { useAuth } from "../../context/AuthContext";
-import Button from "../Button/Button";
+import { Input, Button } from "../../components";
 
 function Header() {
   const { usuario, logout } = useAuth();
   return (
     <header>
-      <Link to="/" state={{ desdeMenu: true }}>
-        <div className="logo">
-          <img src={logo} alt="logo pokedex" />
-          <h2>Pokedex</h2>
+      <div className="trainer">
+        <img src={trainer} />
+        <div className="container-trainer">
+          
+          <h4 className="usuario-bienvenida">Entrenador {usuario.name}</h4>
+          <Link to={"/login"}>Cerrar sesión</Link>
         </div>
-      </Link>
+      </div>
       <div className="sesion">
         {usuario ? (
-          <>
-            <span>Hola, {usuario.name}</span>
-            <Button type="button" onClick={logout}>
-              Cerrar sesión
-            </Button>
-          </>
+          <></>
         ) : (
           <>
             <Link to="/login">Iniciar sesión</Link>

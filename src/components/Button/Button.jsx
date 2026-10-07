@@ -2,19 +2,16 @@ import "./Button.css";
 
 function Button({
   children,
-  onClick,
-  disabled = false,
   className = "",
   secondary = false,
-  type = "button",
-  submit = false,
+  ...props
 }) {
   return (
     <button
-      type={submit ? "submit" : "button"}
-      onClick={onClick}
-      disabled={disabled}
-      className={`button ${className} ${secondary ? "secondary" : ""}`}
+      {...props}
+      className={`button ${className} ${
+        secondary ? "secondary" : ""
+      }`}
     >
       {children}
     </button>

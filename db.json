@@ -5,13 +5,14 @@
       "name": "Nico",
       "email": "nico@gmail.com",
       "password": "Nico.7676!",
-      "pokemonCapturados": [
-        1
-      ],
       "pokemonsCapturados": [
         1,
         3,
-        20
+        20,
+        5,
+        4,
+        15,
+        2
       ]
     },
     {
@@ -39,6 +40,15 @@
         153
       ],
       "id": "01mjPRbnBoQ"
+    },
+    {
+      "name": "Federico",
+      "email": "federico@gmail.com",
+      "password": "1234",
+      "pokemonsCapturados": [
+        67
+      ],
+      "id": "Evzfb-xIbOA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,0 +1,11 @@
+export { default as BotonCaptura } from "./BotonCaptura/BotonCaptura";
+export { default as Buscador } from "./Buscador/Buscador";
+export { default as Button } from "./Button/Button";
+export { default as Caracteristicas } from "./Caracteristicas/Caracteristicas";
+export { default as CardPokemon } from "./CardPokemon/CardPokemon";
+export { default as Header } from "./Header/Header";
+export { default as LineaEvolutiva } from "./LineaEvolutiva/LineaEvolutiva";
+export { default as Stats } from "./Stats/Stats";
+export { default as Type } from "./Type/Type";
+export { default as Input } from "./Input/Input"
+export { default as Totalizador } from "./Totalizador/Totalizador"

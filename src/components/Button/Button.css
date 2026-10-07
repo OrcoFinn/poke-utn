@@ -1,11 +1,19 @@
 .button {
+  font-family: var(--font-text);
+  font-weight: 700;
+  border-radius: 999999px;
   border: none;
-  border-radius: 8px;
   padding: 10px 16px;
   cursor: pointer;
   font-size: 16px;
-  background-color: var(--accent);
+  background-color: var(--action-primary);
   color: #fff;
+  height: 3rem;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  box-shadow: 0.2rem 0.2rem 0 var(--accent);
 }
 
 .button.secondary {

@@ -1,39 +1,67 @@
-header{
-    margin: 1rem;
-    background-color: red;
-    position: sticky;
+header {
+    background-color: var(--accent);
+    /* display: flex;
+    flex-direction: column; */
+    width: 332px;
+    height: 100vh;
     padding: 1rem;
-    top: 1rem;
-    color: #fff;
-    height: 3rem;
+    align-self: stretch;
+    position: sticky;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    flex-shrink: 0;
+}
+
+
+header .trainer {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    border-radius: 1rem;
-    box-shadow: #00000050 0.2rem 0.2rem 0.8rem;
-}
-
-header .logo{
-     display: flex;
-    align-items: center;
-    height: 3rem;
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
     gap: 0.5rem;
+    background-color: var(--white);
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+
 }
 
-.logo img{
-    width: 2rem;
+header .trainer .container-trainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
 }
 
-header .logo h2{
+.trainer img {
+    width: 3rem;
+    border-radius: 9999px;
+}
+
+header .trainer h4 {
+    font-family: var(--font-text);
+    font-weight: 500;
+    color: var(--text-h);
     margin: 0;
 }
 
-header nav a{
-    padding:16px;
+header .trainer a {
+    font-family: var(--font-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 0;
+    text-decoration: none;
+}
+
+header nav a {
+    padding: 16px;
     color: black;
     height: 3rem;
 }
 
-header nav a:hover{
+header nav a:hover {
     background-color: #fff;
 }

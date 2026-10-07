@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import useFetchPokemon from "../hooks/useFetchPokemon";
-import CardPokemon from "../components/CardPokemon/CardPokemon";
-import Buscador from "../components/Buscador/Buscador";
+import {
+  Buscador,
+  CardPokemon,
+} from "../components";
 import "../components/Styles/Pokemons.css";
 
 function Pokemons() {
