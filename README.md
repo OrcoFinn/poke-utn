@@ -1,7 +1,9 @@
 # Pokédex
 
-Para ejecutar el proyecto usar el comando
+Para ejecutar el proyecto usar los comandos
 
+## npm install
+luego
 ## npm run dev:all
 
 
