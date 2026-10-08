@@ -1,33 +1,35 @@
-import { useState } from "react";
-import useSearchPokemon from "../../hooks/useSearchPokemon";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import "./Buscador.css";
 import iconoBusqueda from "../../assets/MagnifyingGlassWhite.svg";
 
 function Buscador() {
-  const [busqueda, setBusqueda] = useState("");
-  const { pokemons, loading, error, searchPokemon } = useSearchPokemon();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const navigate = useNavigate();
+  const busqueda = searchParams.get("search") || "";
 
-  const handleSubmit = (evento) => {
-    evento.preventDefault();
+  const handleChange = (evento) => {
+    const valor = evento.target.value;
 
-    const termino = busqueda.trim();
+    const nuevosParams = new URLSearchParams(searchParams);
 
-    if (!termino) return;
+    if (valor.trim()) {
+      nuevosParams.set("search", valor);
+    } else {
+      nuevosParams.delete("search");
+    }
 
-    navigate(`/pokedex?search=${encodeURIComponent(termino)}`);
+    setSearchParams(nuevosParams);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="barra-busqueda">
-      <img src={iconoBusqueda} className="input-icon" />
+    <form className="barra-busqueda">
+      <img src={iconoBusqueda} className="input-icon" alt="" />
+
       <input
         type="search"
         placeholder="Buscar Pokémon..."
         value={busqueda}
-        onChange={(evento) => setBusqueda(evento.target.value)}
+        onChange={handleChange}
       />
     </form>
   );

@@ -20,7 +20,11 @@
         38,
         18,
         6,
-        12
+        12,
+        59,
+        4,
+        9,
+        448
       ]
     },
     {
@@ -78,6 +82,16 @@
       "password": "252525",
       "pokemonsCapturados": [],
       "id": "t7Dj95zIOOw"
+    },
+    {
+      "name": "Eze",
+      "email": "ezequielgarcia@gmail.com",
+      "password": "eze4545",
+      "pokemonsCapturados": [
+        59,
+        4
+      ],
+      "id": "SVmevncUZis"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

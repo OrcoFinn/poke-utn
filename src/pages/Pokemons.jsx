@@ -8,22 +8,78 @@ import logo from "../assets/pokeballicon.webp";
 
 function Pokemons() {
   const [searchParams] = useSearchParams();
-  const { usuario } = useAuth();
 
   const region = searchParams.get("region");
-
   const busqueda = searchParams.get("search") || "";
-  const [pokemonSeleccionado, setPokemonSeleccionado] = useState(null);
+
+  const { usuario } = useAuth();
 
   const { pokemons, loading, error, cargarMas, hayMas } =
     useFetchPokemon(region);
 
-  const location = useLocation();
+  const [resultadosBusqueda, setResultadosBusqueda] = useState([]);
+  const [loadingBusqueda, setLoadingBusqueda] = useState(false);
 
+  const [pokemonSeleccionado, setPokemonSeleccionado] = useState(null);
+
+  const location = useLocation();
   const observerRef = useRef(null);
+
   if (!usuario) {
     return <Navigate to="/login" replace />;
   }
+
+  useEffect(() => {
+    const termino = busqueda.trim().toLowerCase();
+
+    if (!termino) {
+      setResultadosBusqueda([]);
+      return;
+    }
+
+    const buscarPokemon = async () => {
+      setLoadingBusqueda(true);
+
+      try {
+        const respuesta = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=386",
+        );
+
+        if (!respuesta.ok) {
+          throw new Error("Error al buscar Pokémon");
+        }
+
+        const datos = await respuesta.json();
+
+        const coincidencias = datos.results.filter((pokemon) =>
+          pokemon.name.includes(termino),
+        );
+
+        const detalles = await Promise.all(
+          coincidencias.map(async (pokemon) => {
+            const respuesta = await fetch(pokemon.url);
+
+            if (!respuesta.ok) {
+              throw new Error(`Error al cargar ${pokemon.name}`);
+            }
+
+            return respuesta.json();
+          }),
+        );
+
+        setResultadosBusqueda(detalles);
+      } catch (error) {
+        console.error(error);
+        setResultadosBusqueda([]);
+      } finally {
+        setLoadingBusqueda(false);
+      }
+    };
+
+    buscarPokemon();
+  }, [busqueda]);
+
+  const listaMostrar = busqueda ? resultadosBusqueda : pokemons;
 
   useEffect(() => {
     if (location.state?.desdeMenu) {
@@ -38,16 +94,17 @@ function Pokemons() {
 
     const posicion = Number(scrollGuardado);
 
-    // Esperamos a que React pinte los Pokémon
     requestAnimationFrame(() => {
       window.scrollTo(0, posicion);
     });
   }, [pokemons]);
 
   useEffect(() => {
+    if (busqueda) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && !loading) {
           cargarMas();
         }
       },
@@ -72,7 +129,7 @@ function Pokemons() {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [busqueda, pokemons.length, hayMas, loading, cargarMas]);
 
   if (error) {
     return <p>{error}</p>;
@@ -82,15 +139,29 @@ function Pokemons() {
     <section className="tarjeta">
       <Buscador />
 
-      <div className="pokemon">
-        {pokemons.map((pokemon) => (
-          <CardPokemon
-            key={pokemon.id}
-            pokemon={pokemon}
-            onClick={() => setPokemonSeleccionado(pokemon)}
-          />
-        ))}
-      </div>
+      {loadingBusqueda && (
+        <div className="scroll-loading">
+          <img className="pokeball-loading" src={logo} alt="Cargando" />
+          <p>Buscando Pokémon...</p>
+        </div>
+      )}
+
+      {!loadingBusqueda && (
+        <div className="pokemon">
+          {listaMostrar.map((pokemon) => (
+            <CardPokemon
+              key={pokemon.id}
+              pokemon={pokemon}
+              onClick={() => setPokemonSeleccionado(pokemon)}
+            />
+          ))}
+
+          {busqueda && listaMostrar.length === 0 && (
+            <p>No se encontraron Pokémon.</p>
+          )}
+        </div>
+      )}
+
       {pokemonSeleccionado && (
         <ModalPokemon
           pokemon={pokemonSeleccionado}
@@ -98,7 +169,7 @@ function Pokemons() {
         />
       )}
 
-      {hayMas && (
+      {!busqueda && hayMas && (
         <div className="scroll-loading" ref={observerRef}>
           {loading && (
             <>
@@ -117,12 +188,14 @@ function Pokemons() {
             region="Pokedex de Kanto"
             header
           />
+
           <CardRegion
             img={logo}
             url="/pokedex?region=johto"
             region="Pokedex de Johto"
             header
           />
+
           <CardRegion
             img={logo}
             url="/pokedex?region=hoenn"

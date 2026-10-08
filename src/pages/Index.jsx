@@ -1,6 +1,6 @@
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Buscador, Totalizador, CardRegion } from "../components";
+import { Totalizador, CardRegion } from "../components";
 import "../../src/pages/styles/index.css";
 import logo from "../assets/pokeballicon.webp";
 
@@ -20,7 +20,7 @@ function Index() {
         </div>
       </Link>
 
-      <Buscador />
+      {/* <Buscador /> */}
 
       <div className="regiones">
         <CardRegion
