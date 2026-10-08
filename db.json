@@ -7,7 +7,6 @@
       "password": "Nico.7676!",
       "pokemonsCapturados": [
         5,
-        15,
         2,
         207,
         151,
@@ -19,7 +18,9 @@
         8,
         7,
         38,
-        6
+        18,
+        6,
+        12
       ]
     },
     {
@@ -34,7 +35,10 @@
       "password": "pepecha",
       "pokemonsCapturados": [
         11,
-        22
+        22,
+        6,
+        3,
+        158
       ],
       "id": "ytOGhEHcjOQ"
     },
