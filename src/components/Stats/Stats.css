@@ -9,24 +9,26 @@
 }
 
 .stats-pokemon h2{
+    font-family: var(--font-heading);
     text-align: left;
+    color: var(--white);
+    font-size: 1.25rem;
 }
 
 .stats-pokemon .stat-grid {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     gap: 0.5rem;
     justify-content: center;
     padding: 0;
 }
 
 .stats-pokemon .stat {
+    font-family: var(--font-text);
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    max-width: 150px;
+    width: 49%;
     justify-content: center;
     background-color: rgb(8, 8, 8);
     padding: 0.5rem 1rem;
@@ -34,7 +36,7 @@
 }
 
 .stats-pokemon .stat span {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
 }
 
 .stats-pokemon .stat span,

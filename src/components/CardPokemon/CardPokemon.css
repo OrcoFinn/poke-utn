@@ -12,27 +12,29 @@
     gap: 1rem;
     text-decoration: none;
     width: 100%;
-    max-width: 500px;
+    min-width: 340px;
+    max-width: 800px;
     transition: 0.2s ease all;
-}
-
-.card-pokemon article{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.card-pokemon:hover{
-    background-color: var(--black);
+    cursor: pointer;
 }
 
 .card-pokemon article {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.poke-id-container img{
+
+.card-pokemon:hover {
+    background-color: var(--black);
+}
+
+
+
+.poke-id-container img {
     width: 2rem;
 }
 
@@ -40,23 +42,30 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 0rem;
-    
+    justify-content: flex-start;
+    gap: 1rem;
+
 }
 
-.imagen-container{
+.nombrepk {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+}
+
+.imagen-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 99999px;
     background-color: var(--black);
-    
+
 }
 
-.card-pokemon:hover .imagen-container{
+.card-pokemon:hover .imagen-container {
     background-color: var(--bg);
 }
 
@@ -73,7 +82,7 @@ h3 {
     font-family: var(--font-text);
 }
 
-.card-pokemon:hover h3{
+.card-pokemon:hover h3 {
     color: var(--white);
 }
 
@@ -92,10 +101,12 @@ h3 {
 }
 
 .poke-id-container {
-    display: flex;
+    position: absolute;
     font-family: var(--font-text);
-    width: 100%;
+    width: auto;
     flex-direction: row;
+    top: 1rem;
+    right: 1rem;
     align-items: center;
     gap: 1rem;
     justify-content: center;
@@ -110,10 +121,10 @@ h3 {
     color: #000000;
     font-family: var(--font-text);
     padding: 0.2rem 0.8rem;
-    border-radius: 999999px;
+    border-radius: 0.5rem;
 }
 
-.card-pokemon:hover .poke-id{
+.card-pokemon:hover .poke-id {
     color: var(--white);
 }
 

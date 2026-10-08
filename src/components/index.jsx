@@ -10,3 +10,5 @@ export { default as Type } from "./Type/Type";
 export { default as Input } from "./Input/Input";
 export { default as Totalizador } from "./Totalizador/Totalizador";
 export { default as CardRegion } from "./CardRegion/CardRegion";
+export { default as ModalPokemon } from "./ModalPokemon/ModalPokemon";
+export { default as TagCaptura } from "./TagCaptura/TagCaptura"

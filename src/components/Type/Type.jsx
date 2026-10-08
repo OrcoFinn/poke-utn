@@ -28,7 +28,6 @@ function Type({ pokemon }) {
       {pokemon.types.map((tipo) => (
         <span className="pokemon-type" key={tipo.type.name}>
           <span className="type-icon">{typeEmojis[tipo.type.name]}</span>
-
           <span>{tipo.type.name}</span>
         </span>
       ))}

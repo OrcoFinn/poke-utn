@@ -1,24 +1,23 @@
-import "./BotonCaptura.css";
+import "./TagCaptura.css";
 import useCapturarPokemon from "../../hooks/useCapturarPokemon";
 import pokeball from "../../assets/pokeballicon.webp";
 
-function BotonCaptura({ pokemonID }) {
+function TagCaptura({ pokemonID }) {
   const {
     capturado,
     capturarPokemon,
-    liberarPokemon,
   } = useCapturarPokemon(pokemonID);
 
   return (
-    <button
+    <span
       className={`boton-capturar ${
         capturado ? "capturado" : ""
       }`}
-      onClick={
-        capturado
-          ? liberarPokemon
-          : capturarPokemon
-      }
+      // onClick={
+      //   capturado
+      //     ? liberarPokemon
+      //     : capturarPokemon
+      // }
     >
       {capturado ? (
         <>
@@ -28,8 +27,8 @@ function BotonCaptura({ pokemonID }) {
       ) : (
         "Capturar"
       )}
-    </button>
+    </span>
   );
 }
 
-export default BotonCaptura;
+export default TagCaptura;

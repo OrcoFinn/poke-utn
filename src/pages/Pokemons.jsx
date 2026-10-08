@@ -1,17 +1,19 @@
-import { useEffect, useRef } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useSearchParams, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import useFetchPokemon from "../hooks/useFetchPokemon";
-import { Buscador, CardPokemon, CardRegion } from "../components";
+import { Buscador, CardPokemon, CardRegion, ModalPokemon } from "../components";
 import "../components/Styles/Pokemons.css";
 import logo from "../assets/pokeballicon.webp";
 
 function Pokemons() {
   const [searchParams] = useSearchParams();
+  const { usuario } = useAuth();
 
   const region = searchParams.get("region");
 
   const busqueda = searchParams.get("search") || "";
-
+  const [pokemonSeleccionado, setPokemonSeleccionado] = useState(null);
 
   const { pokemons, loading, error, cargarMas, hayMas } =
     useFetchPokemon(region);
@@ -19,6 +21,9 @@ function Pokemons() {
   const location = useLocation();
 
   const observerRef = useRef(null);
+  if (!usuario) {
+    return <Navigate to="/login" replace />;
+  }
 
   useEffect(() => {
     if (location.state?.desdeMenu) {
@@ -76,6 +81,34 @@ function Pokemons() {
   return (
     <section className="tarjeta">
       <Buscador />
+
+      <div className="pokemon">
+        {pokemons.map((pokemon) => (
+          <CardPokemon
+            key={pokemon.id}
+            pokemon={pokemon}
+            onClick={() => setPokemonSeleccionado(pokemon)}
+          />
+        ))}
+      </div>
+      {pokemonSeleccionado && (
+        <ModalPokemon
+          pokemon={pokemonSeleccionado}
+          onClose={() => setPokemonSeleccionado(null)}
+        />
+      )}
+
+      {hayMas && (
+        <div className="scroll-loading" ref={observerRef}>
+          {loading && (
+            <>
+              <img className="pokeball-loading" src={logo} alt="Cargando" />
+              <p>Cargando Pokémon...</p>
+            </>
+          )}
+        </div>
+      )}
+
       <nav className="nav-principal">
         <div className="regiones">
           <CardRegion
@@ -98,16 +131,6 @@ function Pokemons() {
           />
         </div>
       </nav>
-
-      <div className="pokemon">
-        {pokemons.map((pokemon) => (
-          <CardPokemon key={pokemon.id} pokemon={pokemon} />
-        ))}
-      </div>
-
-      {hayMas && (
-        <div ref={observerRef}>{loading && <p>Cargando Pokémon...</p>}</div>
-      )}
     </section>
   );
 }

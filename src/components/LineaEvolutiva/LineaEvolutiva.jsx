@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { URL_POKEMONS } from "../../utils/api";
-import { Link } from "react-router-dom";
-import "./LineaEvolutiva.css"
+import "./LineaEvolutiva.css";
 
-function LineaEvolutiva({ evolutionChain }) {
+function LineaEvolutiva({ evolutionChain, onClick }) {
   const [evoluciones, setEvoluciones] = useState([]);
 
   useEffect(() => {
@@ -37,18 +36,19 @@ function LineaEvolutiva({ evolutionChain }) {
   }, [evolutionChain]);
 
   return (
-    <section>
+    <section className="contenedor-evoluciones">
       <h2>Línea evolutiva</h2>
-
       <div className="linea-evolutiva">
         {evoluciones.map((pokemon) => (
-          <Link to={`/pokedex/${pokemon.id}`} className="evoluciones">
-            <div key={pokemon.id}>
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <article className="evoluciones">
+            <div className="grupo-evolucion" key={pokemon.id}>
+              <div className="evoluciones-img">
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              </div>
 
               <p>{pokemon.name}</p>
             </div>
-          </Link>
+          </article>
         ))}
       </div>
     </section>

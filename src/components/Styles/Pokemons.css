@@ -1,6 +1,6 @@
 .tarjeta {
     height: auto;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
 }
 
 .tarjeta .pokemon {
@@ -15,8 +15,8 @@
     height: auto;
 }
 
-.pagination {
-    bottom: 0;
+.nav-principal {
+    bottom: 1rem;
     position: sticky;
     background-color: #fff;
     display: flex;
@@ -25,9 +25,27 @@
     gap: 1rem;
     margin-top: 1rem;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 2rem;
+    box-shadow: #00000085 0rem -1rem 4rem;
 }
 
-.regiones{
-    margin: 2rem 0;
+.scroll-loading {
+    padding: 1rem;
+    font-family: var(--font-text);
+    color: var(--text-h);
+}
+
+.scroll-loading .pokeball-loading {
+    width: 4rem;
+    animation: rotar 1s linear infinite;
+}
+
+@keyframes rotar {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

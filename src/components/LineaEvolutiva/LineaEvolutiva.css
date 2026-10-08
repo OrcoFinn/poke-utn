@@ -1,16 +1,54 @@
-.linea-evolutiva{
+.contenedor-evoluciones {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
     gap: 1rem;
+}
+
+.linea-evolutiva {
     display: flex;
     flex-direction: row;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
 }
 
-.linea-evolutiva .evoluciones{
-    text-decoration: none;
-    text-transform: capitalize;
-    color: #000;
+.evoluciones, .grupo-evolucion {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
+}
+
+
+
+.contenedor-evoluciones h2 {
+    font-family: var(--font-text);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+
+
+.evoluciones p {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: var(--text-h);
+}
+
+.evoluciones-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--bg);
+    border-radius: 99999999px;
+}
+
+.evoluciones div img {
+    position: absolute;
+    width: 7rem;
 }

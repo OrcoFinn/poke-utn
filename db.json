@@ -6,15 +6,20 @@
       "email": "nico@gmail.com",
       "password": "Nico.7676!",
       "pokemonsCapturados": [
-        1,
-        3,
-        20,
         5,
-        4,
         15,
         2,
         207,
-        151
+        151,
+        83,
+        64,
+        112,
+        17,
+        3,
+        8,
+        7,
+        38,
+        6
       ]
     },
     {
@@ -28,8 +33,8 @@
       "email": "lenia@peluche.com",
       "password": "pepecha",
       "pokemonsCapturados": [
-        2,
-        11
+        11,
+        22
       ],
       "id": "ytOGhEHcjOQ"
     },

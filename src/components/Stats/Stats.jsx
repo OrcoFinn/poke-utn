@@ -4,8 +4,8 @@ const nombresStats = {
   hp: "PS",
   attack: "Ataque",
   defense: "Defensa",
-  "special-attack": "Ataque especial",
-  "special-defense": "Defensa especial",
+  "special-attack": "SA",
+  "special-defense": "SD",
   speed: "Velocidad",
 };
 
